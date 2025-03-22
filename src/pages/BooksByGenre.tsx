@@ -27,18 +27,18 @@ const BooksByGenre = () => {
   const [searchValue, setSearchValue] = useState("");
   const [nextPageUrl, setNextPageUrl] = useState("");
   const [books, setBooks] = useState<BooksState[]>([]);
-  const isFetchingRef = useRef(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const observer = useRef<IntersectionObserver | null>(null);
 
   const fetchBooks = useCallback(
     async (url?: string) => {
       try {
-        isFetchingRef.current = true;
+        setIsLoading(true);
         const search = searchParams.get("search") || "";
         const result = await axios.get(
           url ||
-            `http://skunkworks.ignitesol.com:8000/books?topic=${genre}&search=${search}&mime_type=image`
+            `https://gutendex.com/books?topic=${genre}&search=${search}&mime_type=image`
         );
         let allBooks = result.data.results;
         const nextPageUrl = result.data.next;
@@ -57,7 +57,7 @@ const BooksByGenre = () => {
       } catch (error) {
         console.log(error);
       } finally {
-        isFetchingRef.current = false;
+        setIsLoading(false);
       }
     },
     [searchParams, genre]
@@ -69,7 +69,7 @@ const BooksByGenre = () => {
 
   const lastPostElementRef = useCallback(
     (node: HTMLDivElement | null) => {
-      if (!nextPageUrl || isFetchingRef.current) return;
+      if (!nextPageUrl || isLoading) return;
 
       if (observer.current) observer.current.disconnect();
 
@@ -85,7 +85,7 @@ const BooksByGenre = () => {
 
       if (node) observer.current.observe(node);
     },
-    [fetchBooks, nextPageUrl]
+    [fetchBooks, nextPageUrl, isLoading]
   );
 
   const updateQueryParam = useDebounce((params: Record<string, string>) => {
@@ -110,7 +110,7 @@ const BooksByGenre = () => {
   };
 
   return (
-    <div className="bg-secondary min-h-screen">
+    <div className="bg-secondary min-h-screen pb-10">
       <div className="bg-white px-5 py-5 sticky top-0 z-10">
         <div className="container">
           <div className="flex items-center gap-3 mb-3">
@@ -141,6 +141,7 @@ const BooksByGenre = () => {
           </div>
         ))}
       </div>
+      {isLoading && <p className="text-center text-xl">Loading...</p>}
     </div>
   );
 };
