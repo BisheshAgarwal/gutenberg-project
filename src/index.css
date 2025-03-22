@@ -118,3 +118,46 @@
     @apply bg-background text-foreground;
   }
 }
+
+@theme {
+  --color-primary: #5e56e7;
+  --color-secondary: #f8f7ff;
+  --color-grey-primary: #f0f0f6;
+  --color-grey-secondary: #a0a0a0;
+  --color-grey-tertiary: #333333;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400; /* Regular */
+  font-display: swap;
+  src: url("/fonts/Montserrat-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600; /* Semi-Bold */
+  font-display: swap;
+  src: url("/fonts/Montserrat-SemiBold.ttf") format("truetype");
+}
+
+body {
+  font-family: "Monsterrat", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+@layer base {
+  h1 {
+    font-size: 48px;
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+  h2 {
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+}
