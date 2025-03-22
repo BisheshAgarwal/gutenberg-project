@@ -19,7 +19,7 @@ const SearchInput = ({ value, onChange }: SearchInputProps) => {
       <Input
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="border-none shadow-none focus-visible:ring-0 focus:ring-0 focus:outline-none w-full pl-2 placeholder:text-grey-secondary placeholder:font-medium"
+        className="font-montserrat text-grey-tertiary font-semibold text-[16px] border-none shadow-none focus-visible:ring-0 focus:ring-0 focus:outline-none w-full pl-2 placeholder:text-grey-secondary placeholder:font-medium"
         placeholder="Search"
       />
       {value && (

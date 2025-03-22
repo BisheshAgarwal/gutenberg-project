@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -119,38 +120,19 @@
   }
 }
 
-@font-face {
-  font-family: "Montserrat";
-  font-style: normal;
-  font-weight: 400; /* Regular */
-  font-display: swap;
-  src: url("/fonts/Montserrat-Regular.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Montserrat";
-  font-style: normal;
-  font-weight: 600; /* Semi-Bold */
-  font-display: swap;
-  src: url("/fonts/Montserrat-SemiBold.ttf") format("truetype");
-}
-
 @theme {
   --color-primary: #5e56e7;
   --color-secondary: #f8f7ff;
   --color-grey-primary: #f0f0f6;
   --color-grey-secondary: #a0a0a0;
   --color-grey-tertiary: #333333;
-  --font-display: "Monsterrat", "sans-serif";
-}
-
-html {
-  font-family: "Monsterrat", sans-serif;
+  --font-montserrat: "Montserrat", sans-serif;
 }
 
 body {
   font-size: 16px;
   font-weight: 400;
+  font-family: var(--font-montserrat);
 }
 
 @layer base {
@@ -158,10 +140,18 @@ body {
     font-size: 48px;
     font-weight: 600;
     color: var(--color-primary);
+    font-family: var(--font-montserrat);
   }
   h2 {
     font-size: 30px;
     font-weight: 600;
     color: var(--color-primary);
+    font-family: var(--font-montserrat);
   }
+}
+
+.container {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 }
