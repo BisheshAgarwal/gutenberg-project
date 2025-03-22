@@ -119,14 +119,6 @@
   }
 }
 
-@theme {
-  --color-primary: #5e56e7;
-  --color-secondary: #f8f7ff;
-  --color-grey-primary: #f0f0f6;
-  --color-grey-secondary: #a0a0a0;
-  --color-grey-tertiary: #333333;
-}
-
 @font-face {
   font-family: "Montserrat";
   font-style: normal;
@@ -143,8 +135,16 @@
   src: url("/fonts/Montserrat-SemiBold.ttf") format("truetype");
 }
 
+@theme {
+  --color-primary: #5e56e7;
+  --color-secondary: #f8f7ff;
+  --color-grey-primary: #f0f0f6;
+  --color-grey-secondary: #a0a0a0;
+  --color-grey-tertiary: #333333;
+  --font-display: "Monsterrat", "sans-serif";
+}
+
 body {
-  font-family: "Monsterrat", sans-serif;
   font-size: 16px;
   font-weight: 400;
 }
